@@ -18,7 +18,7 @@ vet: impt
 .PHONY:vet
 		# shadow cmd/root.go
 
-build: vet
+build: fe
 		go build -o bin/${BINARY_NAME}
 .PHONY:build
 
@@ -30,5 +30,9 @@ run:
 
 test:
 		go test ./...
+
+fe: vet
+		cd internal/front_end && templ generate
+.PHONY:fe
 
 # make build

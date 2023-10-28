@@ -1,4 +1,7 @@
 .vscode
 
+# generated templ files
+**/*_templ.go
+
 # build folder
 bin
