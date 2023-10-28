@@ -1,0 +1,35 @@
+package front_end
+
+import (
+  "fmt"
+
+  "github.com/brayden-ooi/go-templ-htmx/internal/db"
+)
+
+templ TodoContainer(todos []*db.Todo) {
+  <ul id="todo-list">
+    for _, todo := range todos {
+      if !todo.IsDone {
+        <li class="todo-item">
+          <label>{ todo.Description }</label>
+          <button
+            hx-put={ fmt.Sprintf("/todo?id=%s", todo.ID.String()) }
+            hx-trigger="click" 
+            hx-target="#todo-list-container">
+            Done
+          </button>
+          <button
+            hx-delete={ fmt.Sprintf("/todo?id=%s", todo.ID.String()) }
+            hx-trigger="click" 
+            hx-target="#todo-list-container">
+            Delete
+          </button>
+      </li>
+      } else {
+        <li class="todo-item done">
+          <label>{ todo.Description }</label>
+        </li>
+      }
+    }
+  </ul>
+}

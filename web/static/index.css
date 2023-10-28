@@ -1,0 +1,126 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set a base font size and style */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style the to-do list */
+#todo-list {
+  list-style-type: none;
+}
+
+/* Style each to-do item */
+.todo-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.todo-item label {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.todo-item button {
+  margin-right: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+/* Style the input for adding new tasks */
+#new-task {
+  display: flex;
+  margin-top: 20px;
+}
+
+#new-task-input {
+  flex-grow: 1;
+  padding: 10px;
+}
+
+#new-task input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.json-actions-container {
+  padding: 10px;
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 800px;
+  }
+
+  .header {
+    font-size: 24px;
+  }
+
+  .todo-item {
+    padding: 15px;
+  }
+}
+
+/* Media query for tablets */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .container {
+    max-width: 600px;
+  }
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 575px) {
+  .header {
+    font-size: 20px;
+  }
+
+  .todo-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .todo-item label {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .new-task {
+    flex-direction: column;
+  }
+
+  .new-task input[type="text"] {
+    margin-bottom: 10px;
+  }
+}

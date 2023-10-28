@@ -1,0 +1,57 @@
+package front_end
+
+templ Root() {
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/index.css" />
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <main
+      hx-trigger="load once"
+      hx-get="/todo"
+      hx-target="#todo-list-container">
+      <form
+        hx-post="/todo"
+        hx-target="#todo-list-container"
+        id="new-task"
+        hx-on::after-request="this.reset()">
+        <input
+          type="text"
+          name="todo"
+          placeholder="Add an item"
+          id="new-task-input"
+        />
+        <input
+          type="submit"
+          value="Add"
+        />
+      </form>
+      
+      <div id="todo-list-container"></div>
+
+      <div class="json-actions-container">
+        <button type="button" onClick="getTodos()">Get JSON</button>
+      </div>
+    </main>
+  </body>
+
+  <script>
+    async function getTodos() {
+      const res = await fetch("/todo", {
+        method: "GET",
+        headers: {
+          "Accept": "application/json"
+        }
+      })
+
+      const data = await res.json();
+
+      console.log(data)
+    }
+  </script>
+  </html>
+}
